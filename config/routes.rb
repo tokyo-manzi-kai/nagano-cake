@@ -1,72 +1,48 @@
 Rails.application.routes.draw do
+
+  #管理者
+  # カリキュラム  実装のヒント
+  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admins/sessions"
+}
+  #顧客側
+  # カリキュラム  実装のヒント
+  devise_for :end_users,skip: [:passwords], controllers: {
+  registrations: "end_users/registrations",
+  sessions: 'end_users/sessions'
+}
+
+  #管理者
   namespace :admins do
-    get 'order_details/update'
-  end
-  namespace :admins do
-    get 'orders/show'
-    get 'orders/update'
-  end
-  namespace :admins do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admins do
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-  end
-  namespace :admins do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-  end
-  namespace :admins do
+    resources :order_details, only: [:update]
+    resources :orders, only: [:show, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
     get 'homes/top'
   end
-  namespace :end_users do
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/update'
-    get 'addresses/destroy'
-  end
-  namespace :end_users do
-    get 'orders/new'
-    get 'orders/comfilm'
-    get 'orders/complete'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :end_users do
-    get 'cart_items/index'
-  end
-  namespace :end_users do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
-    get 'users/unsubscribe'
-    get 'users/withdraw'
-  end
-  namespace :end_users do
-    get 'registrations/new'
-    get 'registrations/create'
-  end
-  namespace :end_users do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :end_users do
-    get 'homes/top'
+
+  # 顧客
+  scope module: :end_users do
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post 'orders/comfilm'
+        get 'orders/complete'
+      end
+    end
+    resources :cart_items, only: [:index]
+    resources :users, only: [:show, :edit, :update] do
+      collection do
+        get 'users/unsubscribe'
+        patch 'users/withdraw'
+      end
+    end
+    resources :registrations, only: [:new, :create]
+    resources :items, only: [:index, :show]
+    root to: 'homes#top'
     get 'homes/about'
   end
-  devise_for :admins
-  devise_for :end_users
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
