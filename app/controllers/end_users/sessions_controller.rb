@@ -29,10 +29,9 @@ class EndUsers::SessionsController < Devise::SessionsController
   protected
 
   def reject_inactive_enduser
-    @end_user = EndUser.find_by(email: params[:user][:email])
+    @end_user = EndUser.find_by(email: params[:end_user][:email])
     return if !@end_user
-    if @end_user.valid_password?(params[:user][:password]) && (@end_user.withdraw == true)
-        redirect_to new_end_user_session_path
+    if @end_user.valid_password?(params[:end_user][:password])
     end
   end
 end
