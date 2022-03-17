@@ -24,7 +24,7 @@
     <%# ユーザーログイン後のヘッダー　%>
             <% if end_user_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'マイページ', user_path, class: 'nav-link text-light' %>
+                <%= link_to 'マイページ', users_path, class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
                 <%= link_to '商品一覧', items_path, class: 'nav-link text-light' %>
