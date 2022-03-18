@@ -1,4 +1,5 @@
 class EndUsers::AddressesController < ApplicationController
+
   def index
     @end_user = current_end_user
     @shipping_addresses = @end_user.shipping_addresses.all
