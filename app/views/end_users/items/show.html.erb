@@ -1,2 +1,13 @@
-<h1>EndUsers::Items#show</h1>
-<p>Find me in app/views/end_users/items/show.html.erb</p>
+<%= form_with model: @cart_items, url: cart_items_path do |form| %>
+
+  <%= image_tag @items.product_image_id, :size => "400x400" %>
+  <%= @items.name %>
+  <%= @items.item_description %>
+  ¥<%= item.price,to_s(:delimited) %>（税込）
+
+
+
+  <%= f.select :amount, *[1..5], include_blank: '個数選択' %>
+  <%= f.submit 'カートに入れる' %>
+
+<% end %>
