@@ -32,6 +32,7 @@ class EndUsers::SessionsController < Devise::SessionsController
     @end_user = EndUser.find_by(email: params[:end_user][:email])
     return if !@end_user
     if @end_user.valid_password?(params[:end_user][:password])
+      redirect_to my_page_users_path
     end
   end
 end
