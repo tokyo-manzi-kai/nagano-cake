@@ -32,8 +32,9 @@ Rails.application.routes.draw do
       end
     end
     resources :cart_items, only: [:index]
-    resource :users, only: [:show, :edit, :update] do
+    resource :users, only: [:edit, :update] do
       collection do
+        get '/my_page' => "users#show"
         get 'users/unsubscribe'
         patch 'users/withdraw'
       end
