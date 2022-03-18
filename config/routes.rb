@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       end
     end
     resources :cart_items, only: [:index]
-    resources :users, only: [:show, :edit, :update] do
+    resource :users, only: [:show, :edit, :update] do
       collection do
         get 'users/unsubscribe'
         patch 'users/withdraw'
@@ -45,4 +45,4 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+  end
