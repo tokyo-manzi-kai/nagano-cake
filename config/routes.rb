@@ -32,7 +32,13 @@ Rails.application.routes.draw do
         get 'orders/complete'
       end
     end
-    resources :cart_items, only: [:index]
+    resources :cart_items, only: [:index,:update,:destroy,:create] do
+      collection do
+        delete :destroy_all
+      end
+    end
+
+
     resource :users, only: [:edit, :update] do
       collection do
         get '/my_page' => "users#show"
