@@ -22,7 +22,7 @@
               <tr>
                   <td><%= end_user.id %></td>
                   <td>
-                    <%= link_to edit_admins_customer_path(end_user), class: "text-dark", style: "text-decoration: underline;" do %>
+                    <%= link_to admins_customer_path(end_user), class: "text-dark", style: "text-decoration: underline;" do %>
                      <%= end_user.last_name %><%= end_user.first_name %>
                     <% end %>
                   </td>
