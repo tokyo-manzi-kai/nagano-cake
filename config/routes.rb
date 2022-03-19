@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :order_details, only: [:update]
     resources :orders, only: [:index, :show, :update]
+    get "customer/:id/index" => "orders#customer_index", as: 'customer_index'
     resources :customers, only: [:index, :show, :edit, :update]
     get "customer/:id/index" => "orders#customer_index", as: 'customer_index'
     
