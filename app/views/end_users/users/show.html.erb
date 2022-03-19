@@ -1,2 +1,29 @@
-<h1>EndUsers::Users#show</h1>
-<p>Find me in app/views/end_users/users/show.html.erb</p>
+<h3>マイページ</h3>
+
+<h5>登録情報</h5>
+<%= link_to "編集する", edit_users_path(@end_user), class: "btn btn-sm btn-success" %>
+
+<div class="row mt-2 mb-4">
+<table class="table-bordered col-6">
+  <tr>
+    <th>氏名</th>
+    <td><% @end_user.first_name %><% @end_user.last_name %> </td>
+    <th>カナ</th>
+    <td><% @end_user.first_name_kana %><% @end_user.last_name_kana %></td>
+    <th>郵便番号</th>
+    <td><% @end_user.post_code %></td>
+    <th>住所</th>
+    <td><% @end_user.address %></td>
+    <th>電話番号</th>
+    <td><% @end_user.phone_number %></td>
+    <th>メールアドレス</th>
+    <td><% @end_user.email %></td>
+  </tr>
+</table>
+</div>
+
+<h5>配送先</h5>
+<%= link_to "一覧を見る", addresses_path %>
+
+<h5>注文履歴</h5>
+<%= link_to "一覧を見る", orders_path %>

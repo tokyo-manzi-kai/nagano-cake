@@ -53,11 +53,23 @@ class EndUsers::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    users_path
+     my_page_users_path
   end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  def unsubscribe
+    @end_user = EndUser.find_by(name: params[:name])
+  end
+
+  def withdraw
+    @end_user = EndUser.find_by(name: params[:name])
+    @end_user.update(is_valid: false)
+    reset_session
+    redirect_to root_path
+  end
+  
 end
