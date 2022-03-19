@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     get "customer/:id/index" => "orders#customer_index", as: 'customer_index'
-
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     get 'homes/top'
