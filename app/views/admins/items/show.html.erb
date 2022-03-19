@@ -6,7 +6,7 @@
   </div>
     <div class="row align-items-center m-4">
       <div class="col-lg text-center mb-4">
-        <%= attachment_image_tag @item, :image, size:'300x250' %>
+        <%= image_tag @item.image, size:'300x250' %>
       </div>
         <div class="col-lg">
           <table class="table">
@@ -16,11 +16,11 @@
             </tr>
             <tr>
               <th>商品詳細</th>
-              <td><%= @item.introduction %></td>
+              <td><%= @item.item_description %></td>
             </tr>
             <tr>
               <th>ジャンル</th>
-              <td><%= @item.genre.name %></td>
+              <td><%= @item.genre.genre_name %></td>
             </tr>
             <tr>
               <th>税込価格<br>(税抜価格)</th>
