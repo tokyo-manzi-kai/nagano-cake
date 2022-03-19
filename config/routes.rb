@@ -39,7 +39,6 @@ Rails.application.routes.draw do
         patch 'users/withdraw'
       end
     end
-    resources :registrations, only: [:new, :create]
     resources :items, only: [:index, :show]
     root to: 'homes#top'
     get 'homes/about'
