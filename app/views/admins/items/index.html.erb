@@ -16,6 +16,7 @@
           <th class="col-2">商品名</th>
           <th class="col-2">税抜価格</th>
           <th class="col-2">ジャンル</th>
+          <th class="col-2">ステータス</th>
         </thead>
         <tbody class="text-center">
           <% @items.each do |item| %>
@@ -24,6 +25,13 @@
               <td><%= link_to item.name, admins_item_path(item.id) %></td>
               <td><%= item.price %>円</td>
               <td><%= item.genre.genre_name %></td>
+              <td>
+                <%if item.sale_status == true %>
+                  <span class="text-success font-weight-bold">販売中</span>
+                <% else %>
+                  <span class="text-secondary font-weight-bold">販売停止中</span>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
