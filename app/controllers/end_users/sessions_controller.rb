@@ -25,14 +25,12 @@ class EndUsers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
-  protected
-
-  def reject_inactive_enduser
-    @end_user = EndUser.find_by(email: params[:end_user][:email])
-    return if !@end_user
-    if @end_user.valid_password?(params[:end_user][:password])
-      redirect_to my_page_users_path
+    def end_user_state
+      @end_user = EndUser.find_by(email: params[:end_user][:email])
+      return if !@end_user
+        if @end_user.valid_password?(params[:end_user][:password]) && (@end_user.withdraw == true)
+        redirect_to new_end_user_session_path
+        end
     end
-  end
+  
 end

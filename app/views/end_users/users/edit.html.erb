@@ -1,48 +1,54 @@
 <div class='container'>
   <div class='row mt-3'>
     <div class="col-md-3 bg-light m-4 text-center">
-      <h2>会員情報編集</h2>
+      <h5 class="text-center bg-light">会員情報編集</h5>
     </div>
   </div>
 
   <div class="row">
-    <div class='col-md-12 mx-auto mt-3'>
-     <%= form_with model:@end_user, url: users_path do |f| %>
-      <div class="row form-group">
-        <%= f.label "氏名" %>
-        <%= f.text_field @end_user.first_name %>
-        <%= f.text_field @end_user.last_name %>
-      </div>
+    <div class="col-md-12 mx-auto mt-3">
+       <%= form_with model:@end_user, url: users_path do |f| %>
+        <form>
+          <div class="row form-group">
+            <%= f.label "氏名", class: "col-sm-2" %>
+            <%= f.text_field :last_name %>
+            <div class="ml-5">
+              <%= f.text_field :first_name %>
+            </div>
+          </div>
 
-      <div class="row form-group">
-        <%= f.label "フリガナ" %>
-        <%= f.text_field @end_user.first_name_kana %>
-        <%= f.text_field @end_user.last_name_kana %>
-      </div>
+          <div class="row form-group">
+            <%= f.label "フリガナ", class: "col-sm-2" %>
+            <%= f.text_field :last_name_kana %>
+            <div class="ml-5">
+              <%= f.text_field :first_name_kana %>
+            </div>
+          </div>
 
-      <div class="row form-group">
-        <%= f.label "郵便番号" %>
-        <%= f.text_field @end_user.post_code %>
-      </div>
+          <div class="row form-group">
+            <%= f.label "郵便番号", class: "col-sm-2" %>
+            <%= f.text_field :post_code %>
+          </div>
 
-      <div class="row form-group">
-        <%= f.label "住所" %>
-        <%= f.text_field @end_user.address %>
-      </div>
+          <div class="row form-group">
+            <%= f.label "住所", class: "col-sm-2" %>
+            <%= f.text_field :address %>
+          </div>
 
-      <div class="row form-group">
-        <%= f.label "電話番号" %>
-        <%= f.text_field @end_user.phone_number %>
-      </div>
+          <div class="row form-group">
+            <%= f.label "電話番号", class: "col-sm-2" %>
+            <%= f.text_field :phone_number %>
+          </div>
 
-      <div class="row form-group">
-        <%= f.label "メールアドレス" %>
-        <%= f.text_field @end_user.email %>
-      </div>
+          <div class="row form-group">
+            <%= f.label "メールアドレス", class: "col-sm-2" %>
+            <%= f.text_field :email %>
+          </div>
+        </form>
 
-      <%= f.submit "編集内容を保存" %>
+      <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success offset-2" %>
 
-      <%= f.submit "退会する" %>
+      <%= link_to "退会する", users_unsubscribe_users_path, class: "btn btn-danger offset-3" %>
 
      <% end %>
 
