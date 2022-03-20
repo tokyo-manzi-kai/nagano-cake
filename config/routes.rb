@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
     resource :users, only: [:edit, :update] do
       collection do
-        get '/my_page' => "users#show"
+        get 'my_page' => "users#show"
         get 'users/unsubscribe'
         patch 'users/withdraw'
       end
