@@ -26,7 +26,7 @@
               <td><%= item.price %>円</td>
               <td><%= item.genre.genre_name %></td>
               <td>
-                <%if item.sale_status == true %>
+                <%if item.is_active == true %>
                   <span class="text-success font-weight-bold">販売中</span>
                 <% else %>
                   <span class="text-secondary font-weight-bold">販売停止中</span>
