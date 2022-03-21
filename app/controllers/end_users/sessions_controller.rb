@@ -34,5 +34,5 @@ class EndUsers::SessionsController < Devise::SessionsController
     if @end_user.valid_password?(params[:end_user][:password]) && @end_user.is_deleted
       redirect_to new_end_user_session
     end
-  end
+    
 end
