@@ -7,8 +7,15 @@ ja: # 日本語の設定を行う
 
 
       order_status:
-        waiting_for_deposit: "入金待ち"
-        payment_confirmation: "入金確認"
-        production: "製作中"
-        ready_to_ship: "発送準備中"
-        sent: "発送済み"
+        waiting_deposit: "入金待ち"
+        confirm_deposit: "入金確認"
+        in_production: "製作中"
+        ready_ship: "発送準備中"
+        complete_ship: "発送済み"
+        
+      order_detail:
+        making_status:
+        not_yet: "製作不可"
+        waiting_production: "製作待ち"
+        in_production: "製作中"
+        complete_production: "製作完了"

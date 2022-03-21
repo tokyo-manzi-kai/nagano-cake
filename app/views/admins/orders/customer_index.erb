@@ -16,7 +16,7 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td class="pl-5"><u><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id), class: "text-dark"%></u></td>
+              <td class="pl-5"><u><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admins_order_path(order.id), class: "text-dark"%></u></td>
               <td>
                 <%= order.order_details.sum(:quantity) %>
               </td>
