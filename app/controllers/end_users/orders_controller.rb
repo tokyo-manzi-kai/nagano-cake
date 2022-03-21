@@ -7,14 +7,16 @@ class EndUsers::OrdersController < ApplicationController
   def comfilm
     @order = Order.new(order_params)
     @order.end_user_id = current_end_user.id
+
     if params[:order][:address_option] == "0"
       @order.post_code = current_end_user.post_code
       @order.address = current_end_user.address
-      @order.name = current_end_user.first_name + current_end_user.last_name
+      @order.name = current_end_user.last_name + current_end_user.first_name
     elsif params[:order][:address_option] == "1"
-      @order.post_code = ShippingAddress.find(params[:order][:address]).post_code
-      @order.address = ShippingAddress.find(params[:order][:address]).address
-      @order.name = ShippingAddress.find(params[:order][:address]).name
+      @order.post_code = ShippingAddress.find(params[:order][:address_id]).post_code
+      @order.address = ShippingAddress.find(params[:order][:address_id]).address
+      @order.name = ShippingAddress.find(params[:order][:address_id]).address_name
+
     else
     end
     @orders = current_end_user.orders
@@ -39,7 +41,7 @@ class EndUsers::OrdersController < ApplicationController
         order_detail.save
         current_end_user.cart_items.destroy_all
       end
-      redirect_to complete_orders_path
+      redirect_to orders_complete_orders_path
     else
       redirect_to root_path, notice:"必要事項を確認しもう一度お試しください"
     end

@@ -32,5 +32,4 @@ class EndUsers::SessionsController < Devise::SessionsController
         redirect_to new_end_user_session_path
         end
     end
-  
 end
