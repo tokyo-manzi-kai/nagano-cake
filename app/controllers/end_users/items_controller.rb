@@ -8,4 +8,6 @@ class EndUsers::ItemsController < ApplicationController
     @cart_items = CartItem.new
   end
 
+ private
+
 end
