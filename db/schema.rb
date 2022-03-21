@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 2022_03_19_073134) do
   create_table "items", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.string "name", null: false
-    t.integer "product_image_id", null: false
     t.text "item_description", null: false
     t.integer "price", null: false
     t.boolean "is_active", default: true, null: false

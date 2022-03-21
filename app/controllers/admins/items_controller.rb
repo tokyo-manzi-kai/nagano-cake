@@ -5,7 +5,7 @@ class Admins::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.page(params[:page]).per(10)
+    @items = Item.all.page(params[:page])
   end
 
   def create
@@ -31,6 +31,6 @@ class Admins::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :item_description, :genre_id, :price)
+    params.require(:item).permit(:image, :name, :item_description, :genre_id, :price, :is_active)
   end
 end

@@ -3,7 +3,7 @@
     <h1>商品一覧</h1>
     <p>全<%= @items.count %>件</p>
       <%= @items.each do |item| %>
-      <%= image_tag item.product_image_id, :size => "250x250" %>
+      <%= image_tag item.image, :size => "250x250" %>
       <%= item.name %>
       <%= item.price.to_s(:delimited) %>
       <% end %>
