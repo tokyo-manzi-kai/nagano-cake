@@ -14,9 +14,9 @@ class Admins::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if @order.update(order_params)
       if order_params[:status] == "confirm_deposit"
-        @order.order_details.update_all(making_status: 1)
+        @order.order_details.update_all(production_status: 1)
       end
-      redirect_to admin_order_path(@order)
+      redirect_to admins_order_path(@order)
     else
       @order_details = @order.order_details.all
       @total = @order_details.inject(0) { |sum, item| sum + item.subtotal }
@@ -32,6 +32,6 @@ class Admins::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:order_status)
   end
 end

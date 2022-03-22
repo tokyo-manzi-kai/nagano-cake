@@ -9,8 +9,8 @@
           <tr>
             <th>購入者</th>
             <td>
-              <%= link_to admins_customer_path(@order.customer), class: "text-dark", style: "text-decoration: underline;" do %>
-                <%= @order.customer.first_name %><%= @order.customer.last_name %>
+              <%= link_to admins_customer_path(@order.end_user), class: "text-dark", style: "text-decoration: underline;" do %>
+                <%= @order.end_user.last_name %><%= @order.end_user.first_name %>
               <% end %>
             </td>
           </tr>
@@ -34,13 +34,13 @@
 
           <tr>
             <th>支払方法</th>
-            <td><%= @order.method_of_payment %></td>
+            <td><%= @order.method_of_payment_i18n %></td>
           </tr>
           <tr>
             <th>注文ステータス</th>
             <%= form_with model: @order, url: admins_order_path(@order), method: :patch, local: true do |f| %>
               <td>
-                <span class="ml-3"><%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]}%></span>
+                <span class="ml-3"><%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %></span>
                 <%= f.submit "更新", class: "btn btn-success ml-3" %>
               </td>
             <% end %>
@@ -69,13 +69,13 @@
               <td><%= order_detail.quantity %></td>
               <td><%= order_detail.subtotal.to_s(:delimited) %></td>
               <td>
-                <%= form_with(model:[@order, order_detail], url: admins_order_order_detail_path(order_id: @order.id, id: order_detail.id), method: :patch, local: true) do |f| %>
-                <%= f.select :making_status, OrderDetail.making_statuses.keys.map  {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+                <%= form_with(model:[@order, order_detail], url:  admins_order_detail_path(@order), method: :patch, local: true) do |f| %>
+                <%= f.select :production_status, OrderDetail.production_statuses.keys.map {|k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %>
                 <%= f.submit "更新", class: "btn btn-success" %>
                 <% end %>
               </td>
             </tr>
-            <% @sum += order_detail.subtotal %>
+            <% @sum = order_detail.subtotal %>
           <% end %>
         </tbody>
       </table>
