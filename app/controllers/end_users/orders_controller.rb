@@ -16,8 +16,10 @@ class EndUsers::OrdersController < ApplicationController
       @order.post_code = ShippingAddress.find(params[:order][:address_id]).post_code
       @order.address = ShippingAddress.find(params[:order][:address_id]).address
       @order.name = ShippingAddress.find(params[:order][:address_id]).address_name
-
     else
+      unless params[:order][:post_code].present?&params[:order][:address].present?&params[:order][:name].present?
+        redirect_to new_order_path
+      end
     end
     @orders = current_end_user.orders
     @order.postage = 800

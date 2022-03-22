@@ -18,3 +18,16 @@ ja: # 日本語の設定を行う
         waiting_production: "製作待ち"
         in_production: "製作中"
         complete_production: "製作完了"
+
+  activerecord:
+    errors:
+      models:
+        genre:
+          attributes:
+            genre_name:
+              blank: '空白です'
+    attributes:
+      genre:
+        genre_name: 'ジャンル'
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
