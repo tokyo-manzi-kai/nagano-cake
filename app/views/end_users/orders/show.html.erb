@@ -78,7 +78,7 @@
             <% @order_details.each do |order_detail| %>
             <tr>
                 <td class="text-left">
-                    <%= order_detail.item.item_name %>
+                    <%= order_detail.item.name %>
                 </td>
                 <td class="text-right">
                     <%= order_detail.item.price.to_s(:delimited) %>円
