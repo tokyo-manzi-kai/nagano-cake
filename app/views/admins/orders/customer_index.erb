@@ -16,11 +16,11 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td class="pl-5"><u><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id), class: "text-dark"%></u></td>
+              <td class="pl-5"><u><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admins_order_path(order.id), class: "text-dark"%></u></td>
               <td>
                 <%= order.order_details.sum(:quantity) %>
               </td>
-              <td><%= order.status_i18n %></td>
+              <td><%= order.order_status_i18n %></td>
             </tr>
           <% end %>
         </tbody>
