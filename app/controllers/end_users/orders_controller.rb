@@ -36,8 +36,8 @@ class EndUsers::OrdersController < ApplicationController
         order_detail.item_id = cart_item.item_id
         order_detail.order_id = @order.id
         order_detail.quantity = cart_item.quantity
-        order_detail.price = cart_item.subtotal
-        order_detail.product_status = 0
+        order_detail.ordered_price = cart_item.subtotal
+        order_detail.production_status = 0
         order_detail.save
         current_end_user.cart_items.destroy_all
       end
