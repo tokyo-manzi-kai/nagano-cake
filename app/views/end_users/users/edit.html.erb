@@ -1,3 +1,14 @@
+
+<% if @end_user.errors.any? %>
+  <%= @end_user.errors.count %>件が未入力です！！！
+  <ul>
+    <% @end_user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <div class='container'>
   <div class='row mt-3'>
     <div class="col-md-3 bg-light m-4 text-center">
@@ -8,7 +19,6 @@
   <div class="row">
     <div class="col-md-12 mx-auto mt-3">
        <%= form_with model:@end_user, url: users_path do |f| %>
-        <form>
           <div class="row form-group">
             <%= f.label "氏名", class: "col-sm-2" %>
             <%= f.text_field :last_name %>
@@ -44,7 +54,6 @@
             <%= f.label "メールアドレス", class: "col-sm-2" %>
             <%= f.text_field :email %>
           </div>
-        </form>
 
       <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success offset-2" %>
 

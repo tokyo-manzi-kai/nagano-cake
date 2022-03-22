@@ -1,3 +1,13 @@
+
+<% if @genre.errors.any? %>
+  <%= @genre.errors.count %>件が未入力です！！！
+  <ul>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="container">
 
   <div class="row">

@@ -15,8 +15,11 @@ class Admins::CustomersController < ApplicationController
 
   def update
     @end_user = EndUser.find(params[:id])
-    @end_user.update(customer_params)
-    redirect_to admins_customers_path
+    if @end_user.update(customer_params)
+      redirect_to admins_customers_path
+    else
+      render :edit
+    end
   end
 
   private
