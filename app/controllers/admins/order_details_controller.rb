@@ -8,7 +8,7 @@ class Admins::OrderDetailsController < ApplicationController
       end
 
       if @order.order_details.all? {|order_detail| order_detail.production_status == "complete_production"}
-        @order_detail.update(status: 3)
+        @order_detail.update(production_status: 3)
       end
       redirect_to admins_order_path(@order)
     else
