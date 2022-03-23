@@ -11,10 +11,10 @@
         <%= link_to item_path(item.id)  do %>
           <%= image_tag item.image, :size => "250x250" %>
         <% end %>
-        <%= item.name %>
+        <%= item.name %><br/>
         ¥<%= item.price.to_s(:delimited) %>円
       </div>
     <% end %>
   </div>
-  <%= paginate @items %>
+  <div class="col-lg-2 offset-lg-5"><%= paginate @items %></div>
 </div>
