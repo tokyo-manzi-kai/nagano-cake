@@ -11,7 +11,7 @@ ja: # 日本語の設定を行う
         in_production: "製作中"
         ready_ship: "発送準備中"
         complete_ship: "発送済み"
-        
+
     order_detail:
       production_status:
         not_yet: "製作不可"
