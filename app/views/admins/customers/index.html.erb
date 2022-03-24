@@ -28,7 +28,7 @@
                   </td>
                   <td><%= end_user.email %></td>
                   <td>
-                    <%if end_user.is_deleted == false %>
+                    <%if end_user.is_valid == true %>
                       <span class="text-success font-weight-bold">有効</span>
                     <% else %>
                      <span class="text-secondary font-weight-bold">退会済</span>
