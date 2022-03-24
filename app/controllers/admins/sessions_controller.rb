@@ -5,7 +5,7 @@ class Admins::SessionsController < Devise::SessionsController
   skip_before_action :require_no_authentication, only: [:new]
 
   def after_sign_in_path_for(resource)
-    admins_items_path
+    admins_orders_path
   end
 
   def after_sign_out_path_for(resource)
