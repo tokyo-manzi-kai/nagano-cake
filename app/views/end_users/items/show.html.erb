@@ -12,7 +12,11 @@
   <%= form_with model: @cart_items, url: cart_items_path do |f| %>
   <div class="row mt-5">
     <div class="col-3">
-      <%= image_tag @items.image, :size => "350x350" %>
+      <% if @items.image.attached? %>
+        <%= image_tag @items.image, :size => "350x350" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "350x350" %>
+      <% end %>
     </div>
     <div class="col-6 offset-1">
       <table class="col-12">
