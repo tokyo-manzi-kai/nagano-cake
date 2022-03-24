@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :end_users do
+    get 'genres/show'
+  end
   #管理者
   # カリキュラム  実装のヒント
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
