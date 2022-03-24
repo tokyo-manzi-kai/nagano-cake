@@ -6,7 +6,11 @@
   </div>
     <div class="row align-items-center m-4">
       <div class="col-lg text-center mb-4">
-        <%= image_tag @item.image, size:'300x250' %>
+        <% if @item.image.attached? %>
+          <%= image_tag @item.image, size:'300x250' %>
+        <% else %>
+          <%= image_tag 'no_image', size: "300x300" %>
+        <% end %>
       </div>
         <div class="col-lg">
           <table class="table">
