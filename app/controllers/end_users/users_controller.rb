@@ -22,7 +22,7 @@ class EndUsers::UsersController < ApplicationController
 
   def withdraw
     @end_user = current_end_user
-    @end_user.update(is_valid: true)
+    @end_user.update(is_valid: false)
     reset_session
     redirect_to root_path
   end
