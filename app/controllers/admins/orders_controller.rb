@@ -13,7 +13,7 @@ class Admins::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
-      if order_params[:status] == "confirm_deposit"
+      if order_params[:order_status] == "confirm_deposit"
         @order.order_details.update_all(production_status: 1)
       end
       redirect_to admins_order_path(@order)

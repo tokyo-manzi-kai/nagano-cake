@@ -4,11 +4,11 @@ class Admins::OrderDetailsController < ApplicationController
     @order = @order_detail.order
     if @order_detail.update(order_detail_params)
       if order_detail_params[:production_status] == "in_production"
-        @order_detail.update(production_status: 2)
+        @order.update(order_status: 2)
       end
 
       if @order.order_details.all? {|order_detail| order_detail.production_status == "complete_production"}
-        @order_detail.update(production_status: 3)
+        @order.update(order_status: 3)
       end
       redirect_to admins_order_path(@order)
     else
