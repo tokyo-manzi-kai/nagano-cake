@@ -1,0 +1,33 @@
+ja: # 日本語の設定を行う
+  enums: # enumの設定を行う
+    order: # モデル名（Orderモデルに対して）
+      method_of_payment: # カラム名（payment_methodカラムに対して）
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+
+      order_status:
+        waiting_deposit: "入金待ち"
+        confirm_deposit: "入金確認"
+        in_production: "製作中"
+        ready_ship: "発送準備中"
+        complete_ship: "発送済み"
+
+    order_detail:
+      production_status:
+        not_yet: "製作不可"
+        waiting_production: "製作待ち"
+        in_production: "製作中"
+        complete_production: "製作完了"
+
+  activerecord:
+    errors:
+      models:
+        genre:
+          attributes:
+            genre_name:
+              blank: '空白です'
+    attributes:
+      genre:
+        genre_name: 'ジャンル'
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'

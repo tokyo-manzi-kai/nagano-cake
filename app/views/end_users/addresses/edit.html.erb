@@ -1,2 +1,44 @@
-<h1>EndUsers::Addresses#edit</h1>
-<p>Find me in app/views/end_users/addresses/edit.html.erb</p>
+
+<% if @shipping_address.errors.any? %>
+  <%= @shipping_address.errors.count %>件が未入力です！！！
+  <ul>
+    <% @shipping_address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-2 mb-5 offset-1">
+      <h5 class="text-center bg-light mt-5 font-weight-bold">配送先編集</h5>
+   </div>
+ </div>
+
+ <div class="row">
+    <div class="col-12 mb-5">
+      <%= form_with(model:@shipping_address, url:address_path)do |f| %>
+        <div class="row">
+          <p class="col-3">郵便番号(ハイフンなし)</p>
+          <div class="form-group">
+            <%= f.text_field :post_code, autofocus: true, :placeholder => "0000000" %>
+          </div>
+        </div>
+        <div class="row">
+          <p class="col-3">住所</p>
+          <div class="form-group col-9 ml-0 pl-0">
+            <%= f.text_field :address, autofocus: true, :placeholder => "東京都渋谷区代々木神園町0-0",class:"col-7 p-0"%>
+          </div>
+        </div>
+        <div class="row">
+          <p class="col-3">宛名</p>
+          <div class="form-group">
+            <%= f.text_field :address_name, autofocus: true, :placeholder => "マイキーくん" %>
+          </div>
+          <div class="form-group offset-3">
+          <%= f.submit "変更内容を保存",class: 'btn btn-sm btn-success' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
